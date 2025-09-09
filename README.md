@@ -1,89 +1,136 @@
+# Bookmark Any Website - MCP Server
 
-# 📑 Bookmark Manager MCP Server
+A full-stack application that allows users to bookmark and categorize any website. This server is built with Next.js and uses Prisma as an ORM for database management.
 
-A full-stack **Next.js** application that allows users to organize and manage their bookmarks efficiently.  
-The project features a **React-based frontend**, a **Node.js backend**, and a **SQLite database** powered by Prisma.
+-----
 
----
+## Features
 
-## 🚀 Getting Started
+  * **User Authentication:** Secure user registration and login.
+  * **Bookmark Management:** Create, read, update, and delete bookmarks.
+  * **Categorization:** Organize bookmarks into custom categories.
+  * **API Endpoints:** A well-defined API for interacting with the bookmarking service.
 
-Install dependencies and run the development server:
+-----
 
-```bash
-# Install dependencies
-npm install
+## Tech Stack
 
-# Start development server
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-````
+  * **Framework:** [Next.js](https://nextjs.org/)
+  * **ORM:** [Prisma](https://www.prisma.io/)
+  * **Database:** [SQLite](https://www.sqlite.org/index.html) (or any other database supported by Prisma)
+  * **Linting:** [ESLint](https://eslint.org/)
+  * **Language:** [TypeScript](https://www.typescriptlang.org/)
 
-The app will be available at [http://localhost:3000](http://localhost:3000).
-You can start editing the UI by modifying `src/app/page.tsx`. The page will automatically reload as you make changes.
+-----
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to optimize and load [Geist](https://vercel.com/font), Vercel’s modern font family.
+## Getting Started
 
----
+### Prerequisites
 
-## 📂 Project Structure
+  * Node.js (v18.x or later)
+  * npm or yarn
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/extremecoder-rgb/bookmark-any-website-mcp-server.git
+    cd bookmark-any-website-mcp-server
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+3.  **Set up the database:**
+      * Initialize Prisma:
+        ```bash
+        npx prisma init
+        ```
+      * Run database migrations:
+        ```bash
+        npx prisma migrate dev
+        ```
+4.  **Start the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+The application will be available at `http://localhost:3000`.
+
+-----
+
+## Usage
+
+Once the application is running, you can interact with it through the API endpoints. Use a tool like Postman or `curl` to send requests to the server.
+
+-----
+
+## API Endpoints
+
+The API routes are located in the `src/app/api/` directory.
+
+  * **`POST /api/bookmarks`**: Create a new bookmark.
+  * **`GET /api/bookmarks`**: Get a list of all bookmarks.
+  * **`GET /api/bookmarks/[id]`**: Get a specific bookmark by ID.
+  * **`PUT /api/bookmarks/[id]`**: Update a bookmark.
+  * **`DELETE /api/bookmarks/[id]`**: Delete a bookmark.
+
+-----
+
+## Project Structure
 
 ```
-src/
-  app/         # Application entry points, pages, and API routes
-  components/  # Reusable React components
-  hooks/       # Custom React hooks
-  lib/         # Utility functions and helpers
-  types/       # TypeScript type definitions
-public/        # Static assets (images, icons, fonts)
-prisma/        # Prisma schema and SQLite database files
+.
+├── prisma/               # Prisma schema and database files
+│   ├── dev.db
+│   └── schema.prisma
+├── public/               # Static assets
+│   ├── next.svg
+│   └── vercel.svg
+├── src/
+│   ├── app/              # Application pages and API routes
+│   │   ├── api/          # API endpoints
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/       # Reusable React components
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility functions
+│   └── types/            # TypeScript type definitions
+├── .gitignore
+├── eslint.config.mjs
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── README.md
+└── tsconfig.json
 ```
 
----
+-----
 
-## 🔄 Application Workflow
+## Contributing
 
-The flow for adding a new bookmark:
+Contributions are welcome\! Please feel free to submit a pull request or open an issue.
 
-### Mermaid Diagram (GitHub Rendered)
+1.  Fork the repository.
+2.  Create a new branch: `git checkout -b feature-name`
+3.  Make your changes and commit them: `git commit -m 'Add some feature'`
+4.  Push to the branch: `git push origin feature-name`
+5.  Submit a pull request.
 
-```mermaid
-graph TD
-    A[User clicks "Add Bookmark"] --> B{Show BookmarkForm}
-    B --> C[User fills and submits form]
-    C --> D[Trigger addBookmark in useBookmarks hook]
-    D --> E[POST request to /api/bookmarks]
-    E --> F[API route calls createUserBookmark]
-    F --> G[Save bookmark in database]
-    G --> H[Return new bookmark to client]
-    H --> I[Update state in useBookmarks hook]
-    I --> J[Re-render BookmarkList with new entry]
-```
+-----
 
-### Plain Text Fallback (for environments without Mermaid)
+## License
 
-1. User clicks **Add Bookmark**
-2. **BookmarkForm** is shown
-3. User fills and submits the form
-4. `addBookmark` function in `useBookmarks` hook is triggered
-5. `POST /api/bookmarks` is called
-6. API route calls `createUserBookmark`
-7. Bookmark is saved in the database
-8. Server returns the new bookmark
-9. State in `useBookmarks` hook is updated
-10. `BookmarkList` re-renders with the new bookmark
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
----
+-----
 
-## 📘 Resources
+## Contact
 
-* [Next.js Documentation](https://nextjs.org/docs) – Explore features and APIs.
-* [Interactive Tutorial](https://nextjs.org/learn) – Learn Next.js hands-on.
-* [Next.js GitHub](https://github.com/vercel/next.js) – Contribute and give feedback.
-
----
+Created by [@extremecoder-rgb](https://github.com/extremecoder-rgb) - feel free to contact me\!
