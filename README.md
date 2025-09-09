@@ -1,3 +1,4 @@
+
 # 📑 Bookmark Manager MCP Server
 
 A full-stack **Next.js** application that allows users to organize and manage their bookmarks efficiently.  
@@ -49,6 +50,8 @@ prisma/        # Prisma schema and SQLite database files
 
 The flow for adding a new bookmark:
 
+### Mermaid Diagram (GitHub Rendered)
+
 ```mermaid
 graph TD
     A[User clicks "Add Bookmark"] --> B{Show BookmarkForm}
@@ -61,5 +64,26 @@ graph TD
     H --> I[Update state in useBookmarks hook]
     I --> J[Re-render BookmarkList with new entry]
 ```
+
+### Plain Text Fallback (for environments without Mermaid)
+
+1. User clicks **Add Bookmark**
+2. **BookmarkForm** is shown
+3. User fills and submits the form
+4. `addBookmark` function in `useBookmarks` hook is triggered
+5. `POST /api/bookmarks` is called
+6. API route calls `createUserBookmark`
+7. Bookmark is saved in the database
+8. Server returns the new bookmark
+9. State in `useBookmarks` hook is updated
+10. `BookmarkList` re-renders with the new bookmark
+
+---
+
+## 📘 Resources
+
+* [Next.js Documentation](https://nextjs.org/docs) – Explore features and APIs.
+* [Interactive Tutorial](https://nextjs.org/learn) – Learn Next.js hands-on.
+* [Next.js GitHub](https://github.com/vercel/next.js) – Contribute and give feedback.
 
 ---
